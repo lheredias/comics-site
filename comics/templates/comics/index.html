@@ -1,0 +1,91 @@
+{% extends "comics/layout.html" %}
+{% load static %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+  <a class="navbar-brand" >Home</a>
+  <div>
+    <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" id="latest_chapters">Latest Chapters</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="popular_series">Popular Series</a>
+          </li>
+          <li class="nav-item">
+              <div class="dropdown" >
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Popular Updates
+                  </a>
+                  <div class="dropdown-menu" id="popular_chapters">
+                    <a class="dropdown-item" id="1" >Past 24 hours</a>
+                    <a class="dropdown-item" id="2" >Past 48 hours</a>
+                    <a class="dropdown-item" id="7" >Past week</a>
+                </div>
+                </div>
+          </li>
+          
+    </ul>
+  </div>
+</nav>
+<hr class="bg-info">
+<div class="jumbotron bg-warning text-dark" id="jumbo">
+    <h1 class="display-6">So you want to write comics?</h1>
+        <p class="lead">
+            Inspired by Manga Readers, <b>Comics Site</b> is a web app that lets you showcase your <b><i>OWN comic material</i></b> and display your creativity to the rest of the world.
+        </p>
+        <p class="lead"> 
+        Whether you're a full-fledged or an amateur comic creator, or just want to have a fun ride reading tons of free comic material, <b>Comics Site</b> is the place to go.
+        </p>
+    <hr class="my-4">
+    <p>Wonder how to upload content?</p>
+    <p class="lead">
+        <button class="btn btn-primary btn-lg" id="how_to">Learn how to</button>
+    </p>
+  </div>
+<div id="latest_view">
+    <h3 class="text-center">Latest Chapters</h3>
+    <div id="latest_view_content" class="d-flex flex-wrap justify-content-center">
+    </div>
+</div>
+
+<div id="series_view">
+    <h3 class="text-center">Most popular series</h3>
+    <div id="series_view_content" class="d-flex flex-wrap justify-content-center">
+  </div>
+</div>
+
+<div id="chapters_view">
+    <div id="title">
+    </div>
+      <div id="chapters_view_content" class="d-flex flex-wrap justify-content-center">
+    </div>
+    
+</div>
+<div id="how_to_view" class="jumbotron bg-warning text-dark">
+    <h1 class="display-6">Creating content</h1>
+    <hr class="my-4">
+    <h5>To create a series:</h5>
+        <ul>
+            <li>
+                Come up with a unique title, add a short description and upload a cover for it. 
+            </li>
+        </ul>
+    <h5>To create a chapter:</h5>
+        <ul>
+            <li>Upload a .zip file containing all the images for that chapter.</li>
+            <li>Images must NOT be inside a folder. </li>
+            <li>Only images with .jpg or .png extensions are valid.</li>
+            <li>You must name your images like so: 01.png, 02.png ... 99.png.</li>
+            <li>Not sticking to the aforementioned rules may cause issues.</li>
+            <li>You can only delete the last published chapter.</li>
+        </ul>
+    <hr class="my-4">
+    <p class="mb-0">Contact us whenever you wish to mark your series as finished.</p>
+    <button class="btn btn-primary btn-lg mt-2" id="got_it">Got it!</button>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'comics/index.js' %}"></script>
+{% endblock %}

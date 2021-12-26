@@ -1,0 +1,36 @@
+{% extends "comics/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="d-flex flex-wrap justify-content-center ">
+    {% for series in series_list %}
+        <div class="d-flex flex-column p-2 m-2">
+            <div id="thumbnail">
+                <a href="{% url 'series_detail' series.title %}"><img src="{{ series.cover.url }}" width="200" height="300" alt=""></a>
+            </div>
+            <div class="text-wrap mt-2" style="width: 10rem;">
+                <h5>{{ series.title }}</h5>
+            </div>
+            <div>
+                Created by: <a href="{% url 'profile' series.author.username %}">{{ series.author }}</a>
+            </div>
+            <div>
+                Number of chapters: {{ series.chapters.count }}
+            </div>
+            <div>
+                Favorites: {{ series.fav.count }}
+            </div>
+            <div>
+                {% if series.finished %}
+                    Ongoing: No
+                {% else %}
+                    Ongoing: Yes
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        We couldn't find any series.
+    {% endfor %}
+</div>
+
+{% endblock %}

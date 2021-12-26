@@ -1,0 +1,37 @@
+{% extends "comics/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+<!-- {{ chapter.views }} -->
+<h6 class="d-flex flex-wrap justify-content-center border border-info text-info rounded m-2 p-2">
+    {{ series.title }} chapter {{ chapter.chap }}
+</h6>
+
+<div class="p-3 mb-2 bg-dark text-light text-center">
+    <a href="{% url 'series_detail' series.title %}" class="btn btn-outline-info">Back to series</a>
+    
+    {% if prev_chap %}
+        <a href="{% url 'chapter' series.title prev_chap %}" class="btn btn-outline-info">Previous chapter</a>
+    {% endif %}
+    {% if next_chap %}
+        <a href="{% url 'chapter' series.title next_chap %}" class="btn btn-outline-info">Next chapter</a>
+    {% endif %}     
+       
+    {% for page in pages %}
+
+        <div class="p-2 m-2">
+            <img src="{{ page.file.url }}" width=90% height=auto alt="">
+        </div>
+    {% empty %}
+        Pages couldn't be uploaded to server. 
+    {% endfor %}
+    <a href="{% url 'series_detail' series.title %}" class="btn btn-outline-info">Back to series</a>
+    {% if prev_chap %}
+    <a href="{% url 'chapter' series.title prev_chap %}" class="btn btn-outline-info">Previous chapter</a>
+    {% endif %}
+    {% if next_chap %}
+    <a href="{% url 'chapter' series.title next_chap %}" class="btn btn-outline-info">Next chapter</a>
+    {% endif %}   
+</div>
+{% endblock %}

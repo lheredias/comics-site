@@ -1,0 +1,39 @@
+{% extends "comics/layout.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block body %}
+{% if user.is_authenticated %}
+<div class="mb-5 mt-2">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">To create a comic series</h4>
+        <ul>
+            <li>Come up with a unique, original title.</li>
+            <li>Upload a cover image. This will be the front-page of your comic series.</li>
+            <li>Covers with a height-width ratio around 1.5 are strongly encouraged.</li>
+            <li>You are also encouraged to add a short description of up to 1000 characters.</li>
+            <li>Contact us whenver you wish to mark your series as finished.</li>
+        </ul>        
+        <hr>
+        <p class="mb-0">Remember to edit your "Bio" in the profile section so that people can get to know you better.</p>
+    </div>
+
+    <form action="{% url 'create_series' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        
+        <div class="form-group">
+            {{ form.cover|as_crispy_field }}
+            {{ form.title|as_crispy_field }}
+            {{ form.about|as_crispy_field }}
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Create">
+
+    </form>
+{% else %}
+You must be registered before creating a comic series.
+{% endif %}
+</div>
+{% endblock %}

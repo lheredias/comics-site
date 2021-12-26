@@ -1,0 +1,122 @@
+{% extends "comics/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% csrf_token %}
+
+{% block body %}
+<div class="border border-info p-2 m-2">
+
+    <h3 class="d-flex flex-wrap justify-content-center border border-info text-info rounded m-2 p-2">{{ series.title }}</h3>
+
+    <div class="d-flex flex-wrap justify-content-center">
+
+        <div class="d-flex flex-column p-2 m-2">
+            <div>
+                <img src="{{ series.cover.url }}" width=auto height="400" alt="">
+            </div>
+        </div>
+
+        <div class="d-flex flex-column p-2 m-2 align-self-center">
+            <div>
+                Number of chapters: {{ series.chapters.count }}
+            </div>
+            <div>
+                Favorites: {{ series.fav.count }}
+            </div>
+            <div>
+                Created by: <a href="{% url 'profile' series.author.username %}">{{ series.author }}</a>
+            </div>
+            <div>
+                {% if series.finished %}
+                    Ongoing: No
+                {% else %}
+                    Ongoing: Yes
+                {% endif %}
+            </div>
+            <div>
+                {% if user.is_authenticated and series.author != user %}
+                    <form action="{% url 'follow_status' series.title %}" method="POST">
+                        {% csrf_token %}
+                    {% if user in series.fav.all %}
+                        <input class="btn btn-danger mt-2" type="submit" value="Remove from Favorites">
+                    {% else %}
+                        <input class="btn btn-success mt-2" type="submit" value="Add to Favorites">
+                    {% endif %}
+                    </form>
+                {% endif %}
+
+                {% if user.is_authenticated and series.author == user %}
+                    {% if series.chapters.all %}
+                        <form action="{% url 'delete_latest_chapter' series.title %}" method="POST">
+                            {% csrf_token %}
+                            <input class="btn btn-danger mt-2" type="submit" value="Delete latest chapter">
+                        </form>
+                    {% endif %}
+                    <hr class="bg-info">
+                    <form action="{% url 'series_detail' series.title %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form|crispy }}
+                        </div>
+                            <input class="btn btn-success" type="submit" value="Add chapter">
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="border border-info text-info rounded m-2 p-2" id="about">
+        <b>About:</b>
+        <hr class="bg-info">
+        <div id="about_content">{{ series.about }}</div>
+        {% if user.is_authenticated %}
+            
+            {% if user.username == series.author.username %}
+            <div class>
+                <button class="btn btn-primary mt-2" id="edit_about"value="{{ series.title }}" type="submit" value="Edit About">Edit Series Description</button>
+            </div>
+            {% endif %}    
+        {% endif %} 
+    </div>
+
+    <div>
+        {% if user.is_authenticated %}
+            {% if user.username == series.author.username %}
+                <div class="alert alert-danger p-2 m-2" role="alert">
+                    <h4 class="alert-heading">To upload a chapter</h4>
+                    <ul>
+                        <li>Upload a .zip file containing all the images for that chapter.</li>
+                        <li>Images must NOT be inside a folder. </li>
+                        <li>Only images with .jpg or .png extensions are valid.</li>
+                        <li>You must name your images like so: 01.png, 02.png ... 99.png.</li>
+                        <li>Not sticking to the aforementioned rules may cause issues.</li>
+                        <li>You can only delete the last published chapter.</li>
+                    </ul>        
+                    <hr>
+                    <p class="mb-0">Remember that you can only delete the last published chapter.</p>
+                </div>
+            {% endif %} 
+        {% endif %} 
+    </div>
+    
+    
+    <h3 class="ml-3">Chapters List</h3>
+    {% for chapter in series.chapters.all %}
+        <div class="list-group pl-2 pr-2 mr-2 ml-2">
+
+            <a href="{% url 'chapter' series.title chapter.chap %}" class="list-group-item list-group-item-action list-group-item-primary flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                Chapter {{ chapter.chap }}
+                <small class="text-muted">{{ chapter.timestamp|date:"SHORT_DATE_FORMAT" }}</small>
+                </div>
+            </a>
+        </div>
+    {% empty %}
+        No chapters added yet
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'comics/series_detail.js' %}"></script>
+{% endblock %}
