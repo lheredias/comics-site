@@ -2,9 +2,14 @@
 
 ``Comics Site`` is a responsive web app built on the `Django Framework` as part of the `Capstone Project from the CS50's Web Development with Python and Javascript` course.
 
-This README follows the guidelines laid down by the project instructions, save for the screenshots part.
+This README follows the guidelines laid down by the project instructions, save for the screenshots and Gifs.
 
 Comics-site allows the user to read, create and follow original comics series.
+
+![](./screenshots/01.gif)
+![](./screenshots/02.gif)
+
+### **Screenshots:** 
 
 <table>
   <tr>
@@ -106,3 +111,5 @@ be uploaded to the "upload/media" path. This the one model called in order to di
 - The series and pages displayed are random. No copyright infringement intended.
 
 - Nice things that can be implemented from this point onwards: a comments section, image and .zip files size restrictions, non-only integer chapter numeration, featured authors section and so on.
+
+- [Watch full demonstration on YouTube](https://www.youtube.com/watch?v=By3QP9AFunA)
