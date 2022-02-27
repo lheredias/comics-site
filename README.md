@@ -1,20 +1,24 @@
-# Comics Site
+# `Comics Site`
 
-Comics Site is a web app that allows the user to read, create and follow original comics series.
+``Comics Site`` is a responsive web app built on the `Django Framework` as part of the `Capstone Project from the CS50's Web Development with Python and Javascript` course.
+
+This README follows the guidelines laid down by the project instructions, save for the screenshots part.
+
+Comics-site allows the user to read, create and follow original comics series.
 
 ### **Distinctiveness and Complexity:** 
 
-- Comics Site was inspired by Manga Reader sites. The key difference is that it is not only for reading but also **for creating comics material**. Only the user that created a series can upload chapters to that series and, as a consequence, the entirety of the comics content hosted in Comics Site is original (or should be, given that no one plagiarizes a chapter/series from someone or somewhere else).
+- `Comics Site` was inspired by Manga Reader sites. The key difference is that it is not only for reading but also **for creating comics material**. Only the user that created a series can upload chapters to that series and, as a consequence, the entirety of the comics content hosted in `Comics Site` is original (or should be, given that no one plagiarizes a chapter/series from someone or somewhere else).
 
 - Comis Site makes use of Python on both the back and the front end thanks to Django. JavaScript is also used on the front end, allowing the main page to act as a single-page web app, as well as making it possible for the profile and series detail sections to display a functional "edit" button.
 
-- Comics Site also deals with the storage of files uploaded through a web app on the hard drive.
+- `Comics Site` also deals with the storage of files uploaded through a web app on the hard drive.
 
 ### **Features:**
 
 - **Register, Log in, Log out:** self-explanatory.
 
-- **Main Page:** clicking on "Comics Site" will take the user to the main index page which is divided itself into three sections: 
+- **Main Page:** clicking on `"Comics Site"` will take the user to the main index page which is divided itself into three sections: 
 
     - **Latest Chapters:** shows the latest published chapters. On scroll, shows 9 more and so on (makes use of JS).
 
@@ -40,9 +44,11 @@ Comics Site is a web app that allows the user to read, create and follow origina
 
 ### How to Run: 
 
-`python3 makemigrations
+```
+python3 makemigrations
 python3 migrate
-python3 runserver`
+python3 runserver
+```
 
 ### Created Files:
 
@@ -73,7 +79,7 @@ be uploaded to the "upload/media" path. This the one model called in order to di
 
 - Users created:
     - Superuser: heredia
-    - Users: lenin, raul
+    - Users: raul
     - passwords: 1234
 
 - A chapter must be uploaded through a .zip file containing its pages in .jpg or .png format. Pages shall be named like so: 01.png, 02.png ... 99.png. These guidelines are also shown in the main page.
@@ -81,9 +87,3 @@ be uploaded to the "upload/media" path. This the one model called in order to di
 - The series and pages displayed are random. No copyright infringement intended.
 
 - Nice things that can be implemented from this point onwards: a comments section, image and .zip files size restrictions, non-only integer chapter numeration, featured authors section and so on.
-
-### Last but not least:
-
-- Only one extra thing I would have loved to be taught is how to implement a web app on a real web server.
-
-- Thanks a bunch to the CS50's team for the superb content displayed in this course. 
