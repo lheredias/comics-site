@@ -6,6 +6,25 @@ This README follows the guidelines laid down by the project instructions, save f
 
 Comics-site allows the user to read, create and follow original comics series.
 
+<table>
+  <tr>
+    <td><img src="./screenshots/00.png"></td>
+    <td><img src="./screenshots/06.png"></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/07.png"></td>
+    <td><img src="./screenshots/02.png"></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/01.png"></td>
+    <td><img src="./screenshots/03.png"></td>
+  </tr>
+  <tr>
+    <td><img src="./screenshots/04.png"></td>
+    <td><img src="./screenshots/05.png"></td>
+  </tr>
+ </table>
+
 ### **Distinctiveness and Complexity:** 
 
 - `Comics Site` was inspired by Manga Reader sites. The key difference is that it is not only for reading but also **for creating comics material**. Only the user that created a series can upload chapters to that series and, as a consequence, the entirety of the comics content hosted in `Comics Site` is original (or should be, given that no one plagiarizes a chapter/series from someone or somewhere else).
@@ -47,7 +66,7 @@ Comics-site allows the user to read, create and follow original comics series.
 ```
 python3 makemigrations
 python3 migrate
-python3 runserver
+python3 manage.py runserver
 ```
 
 ### Created Files:
