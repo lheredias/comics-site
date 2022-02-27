@@ -1,15 +1,17 @@
 # `Comics Site`
 
-``Comics Site`` is a responsive web app built on the `Django Framework` as part of the `Capstone Project from the CS50's Web Development with Python and Javascript` course.
+`Comics Site` is a responsive web app built on the `Django Framework` as part of the `Capstone Project from the CS50's Web Development with Python and Javascript` course.
 
 This README follows the guidelines laid down by the project instructions, save for the screenshots and Gifs.
 
 Comics-site allows the user to read, create and follow original comics series.
 
-![](./screenshots/01.gif)
-![](./screenshots/02.gif)
+<p align="center">
+  <img src="./screenshots/01.gif">
+  <img src="./screenshots/02.gif">
+</p>
 
-### **Screenshots:** 
+### **Screenshots:**
 
 <table>
   <tr>
@@ -30,7 +32,7 @@ Comics-site allows the user to read, create and follow original comics series.
   </tr>
  </table>
 
-### **Distinctiveness and Complexity:** 
+### **Distinctiveness and Complexity:**
 
 - `Comics Site` was inspired by Manga Reader sites. The key difference is that it is not only for reading but also **for creating comics material**. Only the user that created a series can upload chapters to that series and, as a consequence, the entirety of the comics content hosted in `Comics Site` is original (or should be, given that no one plagiarizes a chapter/series from someone or somewhere else).
 
@@ -42,15 +44,15 @@ Comics-site allows the user to read, create and follow original comics series.
 
 - **Register, Log in, Log out:** self-explanatory.
 
-- **Main Page:** clicking on `"Comics Site"` will take the user to the main index page which is divided itself into three sections: 
+- **Main Page:** clicking on `"Comics Site"` will take the user to the main index page which is divided itself into three sections:
 
-    - **Latest Chapters:** shows the latest published chapters. On scroll, shows 9 more and so on (makes use of JS).
+  - **Latest Chapters:** shows the latest published chapters. On scroll, shows 9 more and so on (makes use of JS).
 
-    - **Popular Series:** shows the most favorite series. On scroll, shows 9 more and so on (makes use of JS).
+  - **Popular Series:** shows the most favorite series. On scroll, shows 9 more and so on (makes use of JS).
 
-    - **Popular Updates:** shows the chapters with the most views in a range of 1, 2 and 7 days (makes use of JS).
+  - **Popular Updates:** shows the chapters with the most views in a range of 1, 2 and 7 days (makes use of JS).
 
-    Clicking on the cover images or the chapter number will take the user to the series detail page and chapter respectively (makes use of JS).
+  Clicking on the cover images or the chapter number will take the user to the series detail page and chapter respectively (makes use of JS).
 
 - **Series List:** self explanatory. Clicking on the cover images will take the user to the series detail page.
 
@@ -66,7 +68,7 @@ Comics-site allows the user to read, create and follow original comics series.
 
 - **Search series:** displays a list of all the series containing the search input as substring.
 
-### How to Run: 
+### How to Run:
 
 ```
 python3 makemigrations
@@ -81,7 +83,7 @@ python3 manage.py runserver
 - **series_detail.js:** JS code behind the "edit about" section of the series detail page.
 - **styles.css:** small style attributes.
 - **chapter.html:** the page that is displayed when reading a chapter.
-create_series.html: the page that is displayed when creating a new series. 
+  create_series.html: the page that is displayed when creating a new series.
 - **Index.html:** the main page. Contains its own nav bar. It also contains three main sections (Latest Chapters, Popular Series and Popular Updates) which are displayed mainly trough JS.
 - **layout.html:** self-explanatory.
 - **login.html:** self-explanatory.
@@ -91,20 +93,21 @@ create_series.html: the page that is displayed when creating a new series.
 - **series_list.html:** self-explanatory. This page is also displayed when visiting the favorites section and searching for a series as it is only the filter associated in the views.py file that changes the series list output.
 - **uploads/media:** the path to where all the chapters' images and series' covers are uploaded.
 
-### Models: 
+### Models:
 
 - **User:** same as usual but with a "bio" field.
 - **Series:** self-explanatory.
 - **Chapter:** model for all the series' chapters. The combination of the series and chapter fields must be unique. The file field must be a .zip file containing the pages of any given chapter. Three methods are implemented to check if the chapter file is valid and to deal with the success-error scenarios, after which the original .zip file is removed to free up disk space.
-- **GalleryImage:** if a chapter upload is valid, its pages will 
-be uploaded to the "upload/media" path. This the one model called in order to display the actual chapter so that users can read it.
+- **GalleryImage:** if a chapter upload is valid, its pages will
+  be uploaded to the "upload/media" path. This the one model called in order to display the actual chapter so that users can read it.
 
 ### Additional information:
 
 - Users created:
-    - Superuser: heredia
-    - Users: raul
-    - passwords: 1234
+
+  - Superuser: heredia
+  - Users: raul
+  - passwords: 1234
 
 - A chapter must be uploaded through a .zip file containing its pages in .jpg or .png format. Pages shall be named like so: 01.png, 02.png ... 99.png. These guidelines are also shown in the main page.
 
