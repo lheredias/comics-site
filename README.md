@@ -71,6 +71,7 @@ Comics-site allows the user to read, create and follow original comics series.
 ### How to Run:
 
 ```
+python -m pip install -r requirements.txt
 python manage.py runserver
 ```
 
