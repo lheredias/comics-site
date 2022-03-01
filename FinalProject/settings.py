@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from django.contrib.messages import constants as messages
+import django_on_heroku
+django_on_heroku.settings(locals())
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
         messages.INFO: 'alert-info',
@@ -139,5 +141,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
 MEDIA_URL = "/comics-media/"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-import django_on_heroku
-django_on_heroku.settings(locals())
+
