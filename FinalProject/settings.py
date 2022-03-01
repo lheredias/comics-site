@@ -13,14 +13,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from django.contrib.messages import constants as messages
 import django_on_heroku
-django_on_heroku.settings(locals())
 MESSAGE_TAGS = {
-        messages.DEBUG: 'alert-secondary',
-        messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: 'alert-warning',
-        messages.ERROR: 'alert-danger',
- }
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -142,3 +141,4 @@ MEDIA_URL = "/comics-media/"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
+django_on_heroku.settings(locals())
