@@ -27,10 +27,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g&cfs8dt+#f^w_m2nm-*j!jjt4)7b!m^qrmidj_a6n2=*$m3wt'
+# SECRET_KEY = 'django-insecure-g&cfs8dt+#f^w_m2nm-*j!jjt4)7b!m^qrmidj_a6n2=*$m3wt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -139,3 +139,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
 MEDIA_URL = "/comics-media/"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+import django_on_heroku
+django_on_heroku.settings(locals())
