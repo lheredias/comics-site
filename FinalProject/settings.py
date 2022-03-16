@@ -37,7 +37,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -143,28 +143,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 
-# AWS S3 SETTINGS
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-AWS_URL = env('AWS_URL')
-AWS_DEFAULT_ACL = None
-AWS_S3_REGION_NAME = 'sa-east-1'
-AWS_S3_SIGNATURE_VERSION = 's3v4'
+USE_S3 = env('USE_S3') == 'TRUE'
 
-STATIC_URL = AWS_URL + '/static/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = AWS_URL + '/media/'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+if USE_S3:
+    # AWS S3 SETTINGS
+    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+    AWS_URL = env('AWS_URL')
+    AWS_DEFAULT_ACL = None
+    AWS_S3_REGION_NAME = 'sa-east-1'
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+    STATIC_URL = AWS_URL + '/static/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = AWS_URL + '/media/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+else:
+    STATIC_URL = '/static/'
+    MEDIA_ROOT = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
+    MEDIA_URL = "/comics-media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# STATIC_URL = '/static/'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# MEDIA_ROOT = "/media/"
-# #MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
-# MEDIA_URL = "/comics-media/"
-
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 django_on_heroku.settings(locals(), staticfiles=False)

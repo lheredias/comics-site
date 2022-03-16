@@ -18,12 +18,21 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 
-# urlpatterns = [
-#     path("admin/", admin.site.urls),
-#     path("", include("comics.urls")),
-# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+import environ
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("comics.urls")),
-]
+env = environ.Env()
+
+# reading .env file
+environ.Env.read_env()
+USE_S3 = env('USE_S3') == 'TRUE'
+
+if USE_S3:
+    urlpatterns = [
+        path("admin/", admin.site.urls),
+        path("", include("comics.urls")),
+    ]
+else:
+    urlpatterns = [
+        path("admin/", admin.site.urls),
+        path("", include("comics.urls")),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
