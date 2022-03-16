@@ -67,7 +67,7 @@ class Chapter(models.Model):
             return False
         names = []
         for name in zip_file.namelist():
-            if not name.startswith('__MACOSX/') and not name.endswith("/"):
+            if not name.startswith('__MACOSX/') and not name.endswith(("/", "DS_Store")):
                 names.append(name)
         zip_file.close()
         if len(names) == 0:
@@ -89,7 +89,7 @@ class Chapter(models.Model):
     def to_gallery(self):
         zip_file = ZipFile(self.zip_import)
         for name in zip_file.namelist():
-            if not name.startswith('__MACOSX/') and not name.endswith("/"):
+            if not name.startswith('__MACOSX/') and not name.endswith(("/", "DS_Store")):
                 data = zip_file.read(name)
                 name = os.path.split(name)[1]
                 path = os.path.join(
