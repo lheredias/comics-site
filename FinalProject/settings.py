@@ -162,7 +162,7 @@ if USE_S3:
 
 else:
     STATIC_URL = '/static/'
-    MEDIA_ROOT = "/media/"
+    # MEDIA_ROOT = "/media/"
     MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
     MEDIA_URL = "/comics-media/"
 
