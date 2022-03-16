@@ -95,7 +95,7 @@ class Chapter(models.Model):
                 path = os.path.join(
                     "media",
                     self.series.title,
-                    self.chap,
+                    f"{self.chap}",
                     name
                 )
                 saved_path = default_storage.save(path, ContentFile(data))
