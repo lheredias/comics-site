@@ -13,7 +13,7 @@ class User(AbstractUser):
 
 
 class Series(models.Model):
-    cover = models.ImageField(upload_to="media")
+    cover = models.ImageField(upload_to="media/covers")
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                max_length=140, related_name='series')
     title = models.CharField(unique=True, max_length=40)
@@ -89,11 +89,14 @@ class Chapter(models.Model):
     def to_gallery(self):
         zip_file = ZipFile(self.zip_import)
         for name in zip_file.namelist():
-            if not name.startswith('__MACOSX/'):
+            if not name.startswith('__MACOSX/') and not name.endswith("/"):
                 data = zip_file.read(name)
                 name = os.path.split(name)[1]
                 path = os.path.join(
-                    "media", name
+                    "media",
+                    self.series.title,
+                    self.chap,
+                    name
                 )
                 saved_path = default_storage.save(path, ContentFile(data))
 
