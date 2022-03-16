@@ -30,6 +30,9 @@ class Series(models.Model):
             'favs': self.fav.count()
         }
 
+    def __str__(self):
+        return f"{self.title}"
+
 
 class Chapter(models.Model):
     series = models.ForeignKey(Series, on_delete=models.CASCADE,
@@ -53,6 +56,9 @@ class Chapter(models.Model):
     class Meta:
         constraints = [models.UniqueConstraint(
             fields=('series', 'chap'), name='unique_chapter')]
+
+    def __str__(self):
+        return f"{self.series.title} chapter {self.chap}"
 
     def is_valid(self):
         try:
