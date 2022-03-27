@@ -41,7 +41,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["https://pacific-reaches-19144.herokuapp.com"]
+CSRF_TRUSTED_ORIGINS = ["https://comics-site.herokuapp.com"]
 
 
 # Application definition
