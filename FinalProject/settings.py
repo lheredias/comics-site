@@ -16,8 +16,6 @@ import environ
 
 env = environ.Env()
 
-# reading .env file
-environ.Env.read_env()
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-secondary',
     messages.INFO: 'alert-info',

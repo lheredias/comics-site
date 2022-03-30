@@ -1,10 +1,12 @@
 # `Comics Site`
 
-`Comics Site` is a responsive web app built on the `Django Framework` as part of the `Capstone Project from the CS50's Web Development with Python and Javascript` course.
+`Comics Site` is a responsive web app built upon the `Django Framework` as part of the `Capstone Project from the CS50's Web Development with Python and Javascript` course.
 
-This README follows the guidelines laid down by the project instructions, save for the screenshots and Gifs.
+This project was taken a few steps further and deployed through Heroku, using Amazon S3 for handling static and media files.
 
-Comics-site allows the user to read, create and follow original comics series.
+The final product can be found [here](mics-site.herokuapp.com).
+
+Comics-site allows users to read, host and follow original comics series material.
 
 <p align="center">
   <img src="./screenshots/01.gif">
@@ -38,7 +40,9 @@ Comics-site allows the user to read, create and follow original comics series.
 
 - Comis Site makes use of Python on both the back and the front end thanks to Django. JavaScript is also used on the front end, allowing the main page to act as a single-page web app, as well as making it possible for the profile and series detail sections to display a functional "edit" button.
 
-- `Comics Site` also deals with the storage of files uploaded through a web app on the hard drive.
+- `Comics Site` also deals with the storage of files uploaded through a web app. This is done, in a local environment, on a hard drive and, in production, on Amazon S3.
+
+- `Comics site`
 
 ### **Features:**
 
@@ -72,6 +76,8 @@ Comics-site allows the user to read, create and follow original comics series.
 
 ```
 python -m pip install -r requirements.txt
+python manage.py makemigrations comics
+python manage.py migrate
 python manage.py runserver
 ```
 
@@ -101,12 +107,6 @@ python manage.py runserver
   be uploaded to the "upload/media" path. This the one model called in order to display the actual chapter so that users can read it.
 
 ### Additional information:
-
-- Users created:
-
-  - Superuser: heredia
-  - Users: raul
-  - passwords: 1234
 
 - A chapter must be uploaded through a .zip file containing its pages in .jpg or .png format. Pages shall be named like so: 01.png, 02.png ... 99.png. These guidelines are also shown in the main page.
 
