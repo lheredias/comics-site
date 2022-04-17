@@ -56,6 +56,7 @@ class Chapter(models.Model):
     class Meta:
         constraints = [models.UniqueConstraint(
             fields=('series', 'chap'), name='unique_chapter')]
+        ordering = ['-chap']
 
     def __str__(self):
         return f"{self.series.title} chapter {self.chap}"
