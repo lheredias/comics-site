@@ -103,7 +103,7 @@
 
 
     <h3 class="ml-3">Chapters List</h3>
-    {% for chapter in series.chapters.all|timestamp %}
+    {% for chapter in series.chapters.all|dictsort="timestamp" %}
     <div class="list-group pl-2 pr-2 mr-2 ml-2">
 
         <a href="{% url 'chapter' series.title chapter.chap %}"
