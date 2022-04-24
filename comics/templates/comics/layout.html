@@ -1,77 +1,97 @@
 {% load static %}
 
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <html lang="en">
-    <head>
-        <title>{% block title %}Comic Site{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'comics/styles.css' %}" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        {% block script %}
-        {% endblock %}
-    </head>
-    <body class="body bg-dark text-light">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'index' %}">Comics Site</a>
+<head>
+    <title>{% block title %}Comic Site{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'comics/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    {% block script %}
+    {% endblock %}
+</head>
 
-            <div>
-              <ul class="navbar-nav mr-auto">
+<body class="body bg-dark text-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">Comics Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+
+            <ul class="navbar-nav mr-auto">
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' user.username %}"><strong>{{ user.username }}</strong></a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' user.username %}"><strong>{{ user.username
+                            }}</strong></a>
+                </li>
                 {% endif %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'series' %}">Series List</a>
+                    <a class="nav-link" href="{% url 'series' %}">Series List</a>
                 </li>
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'create_series' %}">Create Series</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'favorites' user.username %}">Favorites <span class="badge badge-secondary"> {{ user.favs.count }} </span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_series' %}">Create Series</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'favorites' user.username %}">Favorites <span
+                            class="badge badge-secondary"> {{ user.favs.count }} </span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                </li>
                 {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
                 {% endif %}
-                    <li class="nav-item">
-                        <form class="form-inline" action="{% url 'search' %}" method='get'>
-                            {% csrf_token %}
-                            <input class="nav-link bg-dark text-right search" type="text" name="search" placeholder="Search series">
-                        </form>                    
-                    </li>
-              </ul>
-            </div>
-          </nav>
-
-          {% if messages %}
-          {% for message in messages %}
-            <div class="container-fluid p-0">
-            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="True">&times;</span>
-                </button>
-                {{ message }}
-            </div>
-            </div>
-            {% endfor %}
-          {% endif %}
-          
-        <div class="pl-5 pr-5 ml-5 mr-5">
-            {% block body %}
-            {% endblock %}
+                <li class="nav-item">
+                    <form class="form-inline" action="{% url 'search' %}" method='get'>
+                        {% csrf_token %}
+                        <input class="nav-link bg-dark text-right search" type="text" name="search"
+                            placeholder="Search series">
+                    </form>
+                </li>
+            </ul>
         </div>
-    </body>
+    </nav>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="container-fluid p-0">
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="True">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="mx-auto pl-3 pr-3 " , style="max-width:900px">
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+
 </html>
