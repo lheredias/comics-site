@@ -63,7 +63,7 @@ function chapters_view(days) {
         } else {
         data.forEach(element=> {
             container.querySelector('#chapters_view_content').innerHTML+=
-            `<div class="d-flex flex-column p-2 m-2">
+            `<div class="d-flex flex-column p-2">
             <div>
             <a href="/series/${element.title}"><img id="thumbnail" src=${element.cover} width=200 height=300 alt=""></a>
             </div>
@@ -122,7 +122,7 @@ function latest_view() {
         console.log(data)
         data.forEach(element=> {
             container.querySelector('#latest_view_content').innerHTML+=
-            `<div class="d-flex flex-column p-2 m-2">
+            `<div class="d-flex flex-column p-2">
             <div>
             <a href="/series/${element.title}"><img id="thumbnail" src=${element.cover} width=200 height=300 alt=""></a>
             </div>
@@ -178,7 +178,7 @@ function series_view() {
         console.log(data)
         data.forEach(element=> {
             container.querySelector('#series_view_content').innerHTML+=
-            `<div class="d-flex flex-column p-2 m-2">
+            `<div class="d-flex flex-column p-2">
             <div>
             <a href="/series/${element.title}"><img id="thumbnail" src=${element.cover} width=200 height=300 alt=""></a>
             </div>
