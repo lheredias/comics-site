@@ -4,7 +4,7 @@
 {% block body %}
 <div class="d-flex flex-wrap justify-content-center ">
     {% for series in series_list %}
-        <div class="d-flex flex-column p-2 m-2">
+        <div class="d-flex flex-column p-2">
             <div id="thumbnail">
                 <a href="{% url 'series_detail' series.title %}"><img src="{{ series.cover.url }}" width="200" height="300" alt=""></a>
             </div>

@@ -4,20 +4,20 @@
 {% csrf_token %}
 
 {% block body %}
-<div class="border border-info p-2 m-2">
+<div class="border border-info p-2">
 
     <h3 class="d-flex flex-wrap justify-content-center border border-info text-info rounded m-2 p-2">{{ series.title }}
     </h3>
 
     <div class="d-flex flex-wrap justify-content-center">
 
-        <div class="d-flex flex-column p-2 m-2">
+        <div class="d-flex flex-column p-2">
             <div>
                 <img src="{{ series.cover.url }}" width=auto height="400" alt="">
             </div>
         </div>
 
-        <div class="d-flex flex-column p-2 m-2 align-self-center">
+        <div class="d-flex flex-column p-2 align-self-center">
             <div>
                 Number of chapters: {{ series.chapters.count }}
             </div>
@@ -84,7 +84,7 @@
     <div>
         {% if user.is_authenticated %}
         {% if user.username == series.author.username %}
-        <div class="alert alert-danger p-2 m-2" role="alert">
+        <div class="alert alert-danger p-2" role="alert">
             <h4 class="alert-heading">To upload a chapter</h4>
             <ul>
                 <li>Upload a .zip file containing all the images for that chapter.</li>
